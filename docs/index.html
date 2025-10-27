@@ -9,7 +9,7 @@
     </style>
   </head>
   <body>
-    <div class="banner"><strong>Draft:</strong> This is a preview spec for client review. “Try it out” is disabled.</div>
+    <div class="banner"><strong>Draft:</strong> This is a first draft preview.</div>
     <div id="swagger-ui"></div>
     <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
     <script>
@@ -17,8 +17,8 @@
         SwaggerUIBundle({
           url: "./openapi.json",
           dom_id: "#swagger-ui",
-          // disable Try It Out for a pure preview
-          supportedSubmitMethods: []
+          // disable/enable Try It Out
+          //supportedSubmitMethods: []
         });
       };
     </script>
