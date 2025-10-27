@@ -1,0 +1,171 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Emergency API",
+    "version": "0.1.0",
+    "description": "Draft documentation (work in progress)"
+  },
+  "servers": [
+    {
+      "url": "https://example.placeholder"
+    }
+  ],
+  "paths": {
+    "/v1/needs": {
+      "get": {
+        "summary": "Needs & unmet needs over time (from iCarol Contact Records)",
+        "tags": [
+          "Needs"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "start",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "in": "query",
+            "name": "bucket",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "5m",
+                "15m",
+                "hour",
+                "day"
+              ],
+              "default": "hour"
+            }
+          },
+          {
+            "in": "query",
+            "name": "province",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "city",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "postal_area",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            }
+          },
+          {
+            "in": "query",
+            "name": "taxonomy_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "unmet_only",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "top_n_reasons",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Totals plus time series; optional top reasons."
+          }
+        }
+      },
+      "post": {
+        "summary": "Advanced needs query (body)",
+        "tags": [
+          "Needs"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Query result"
+          }
+        }
+      }
+    },
+    "/v1/resources": {
+      "get": {
+        "summary": "Resource counts by taxonomy and region (from iCarol Resources API)",
+        "tags": [
+          "Resources"
+        ],
+        "responses": {
+          "200": {
+            "description": "Counts grouped by province and taxonomy."
+          }
+        }
+      },
+      "post": {
+        "summary": "Advanced resources query (body)",
+        "tags": [
+          "Resources"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Query result"
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}

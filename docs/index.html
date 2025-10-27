@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Emergency API — Draft</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css"/>
+    <style>
+      .banner {background:#fff3cd;border:1px solid #ffeeba;padding:.6rem 1rem;margin:12px 0;border-radius:6px}
+    </style>
+  </head>
+  <body>
+    <div class="banner"><strong>Draft:</strong> This is a preview spec for client review. “Try it out” is disabled.</div>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+    <script>
+      window.onload = () => {
+        SwaggerUIBundle({
+          url: "./openapi.json",
+          dom_id: "#swagger-ui",
+          // disable Try It Out for a pure preview
+          supportedSubmitMethods: []
+        });
+      };
+    </script>
+  </body>
+</html>
